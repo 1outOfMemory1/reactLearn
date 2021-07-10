@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reactComponent</title>
+</head>
+
+<body>
+    <div id="test"></div>
+    <script type="text/javascript" crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script type="text/javascript" crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        function DemoDiv(){
+            console.log(this)  // 此处的this是undefine 因为babel使用了严格模式
+            return <h2>我是函数定义的组件 </h2>
+        }
+        // 执行了ReactDOM.render(<DemoDiv/>,document.getElementById("test"))发生了什么
+        //      1.react 解析组件标签,找到DemoDiv组件
+        //      2.发现组件是函数定义的,随后调用该函数,将返回的虚拟DOM转换为真实DOM,随后呈现在页面中
+        ReactDOM.render(<DemoDiv/>,document.getElementById("test"))   
+     </script>
+</body>
+</html>
